@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Wish list</h2>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th><th>Name</th><th>Link</th><th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for wish in wishes %}
+            <tr>
+                <td>{{wish.image}}</td>
+                <td>{{wish.name|e}}</td>
+                <td>
+                    {% for link in wish.links %}
+                    <a href="{{link|e}}" target="_blank">{{loop.index}}</a>
+                    {% endfor %}
+                </td>
+                <td>{{wish.price|e}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
